@@ -1,0 +1,47 @@
+body,
+html {
+  background-color: #f8f9f9;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+html {
+  font-size: 10px;
+}
+body {
+  font-family: "Roboto", Verdana, serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+}
+.container {
+  width: 100%;
+  max-width: 1140px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+// @media (min-width: 1200px) {
+//   .container {
+//     max-width: 1140px;
+//   }
+// }
+// @media (min-width: 992px) {
+//   .container {
+//     max-width: 960px;
+//   }
+// }
+// @media (min-width: 768px) {
+//   .container {
+//     max-width: 720px;
+//   }
+// }
+// @media (min-width: 576px) {
+//   .container {
+//     max-width: 540px;
+//   }
+// }
+
+.text-center {
+  text-align: center;
+}
