@@ -1,6 +1,7 @@
 //! body
 const root = document.querySelector(".root");
-//! header
+
+//! 1 header
 const header = document.createElement("header");
 header.classList.add("header");
 //! headerContainer
@@ -19,7 +20,7 @@ const leadText = document.createElement("p");
 leadText.classList.add("lead-text");
 leadText.innerText = "Welcome to amazing book shop!";
 
-//! main
+//! 2 main
 const main = document.createElement("main");
 //! headerContainer
 const maneContainer = document.createElement("div");
@@ -43,6 +44,10 @@ order.classList.add("order__container");
 
 //! order
 
+//! 3 overlay
+const overlay = document.createElement("div");
+overlay.classList.add("overlay");
+
 // HEADER
 root.append(header);
 header.append(headerContainer);
@@ -61,54 +66,140 @@ catalog.append(cardsList);
 
 row.append(order);
 
+// OVERLAY
+root.append(overlay);
+
+let books = [];
+
+class BookCard {
+  constructor(author, title, price, description, imageLink, ...classes) {
+    this.author = author;
+    this.title = title;
+    this.price = price;
+    this.imageLink = imageLink;
+    this.description = description;
+  }
+  renderCard() {
+    let cardContainer = document.createElement("li");
+    cardContainer.classList.add("card__container");
+    // card.setAttribute("id", `${index + 1}`); // change after
+
+    let card = document.createElement("div");
+    card.classList.add("card");
+
+    let img = document.createElement("img");
+    img.classList.add("card__img");
+    img.src = this.imageLink;
+    img.alt = this.title;
+
+    let cardBody = document.createElement("div");
+    cardBody.classList.add("card-body", "text-center");
+
+    let autor = document.createElement("p");
+    autor.classList.add("item-autor", "zagolovok");
+    autor.textContent = this.author;
+
+    let title = document.createElement("h3");
+    title.classList.add("item-title", "zagolovok");
+    title.textContent = this.title;
+
+    let btnOpenModal = document.createElement("button");
+    btnOpenModal.innerHTML = "Show more";
+    btnOpenModal.classList.add("btn-link");
+    btnOpenModal.onclick = () => new Modal(this.title, this.description).openModal();
+
+    let detailsWrapper = document.createElement("div");
+    detailsWrapper.classList.add("details-wrapper");
+    detailsWrapper.innerHTML = `<div class="items counter-wrapper">
+            <div class="items__control" data-action="minus">-</div>
+              <div class="items__current" data-counter>1</div>
+              <div class="items__control" data-action="plus">+</div>
+          </div>
+          <div class="price">$ ${this.price}</div>`;
+
+    let btnBin = document.createElement("button");
+    btnBin.innerHTML = "+ в корзину";
+    btnBin.classList.add("btn");
+    // btnOpenModal.onclick = () => openModal();
+
+    cardContainer.append(card);
+    card.append(img);
+    card.append(cardBody);
+    cardBody.append(autor);
+    cardBody.append(autor);
+    cardBody.append(title);
+    cardBody.append(btnOpenModal);
+    cardBody.append(detailsWrapper);
+    cardBody.append(btnBin);
+
+    return cardContainer;
+  }
+}
+
+class Modal {
+  constructor(title, description, ...classes) {
+    this.title = title;
+    this.description = description;
+  }
+  createModal() {
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+    modal.setAttribute("id", "modal");
+
+    const headerContainer = document.createElement("div");
+    headerContainer.classList.add("modal-header");
+    // title
+    const title = document.createElement("div");
+    title.classList.add("modal-title");
+    title.textContent = this.title;
+    // close button
+    const btnCloseModal = document.createElement("button");
+    btnCloseModal.classList.add("close-button");
+    btnCloseModal.innerHTML = "&times";
+    btnCloseModal.onclick = () => this.closeModal();
+    // description
+    const description = document.createElement("div");
+    description.classList.add("modal-body");
+    description.textContent = this.description;
+    // append
+    modal.append(headerContainer);
+    modal.append(description);
+    headerContainer.append(title);
+    headerContainer.append(btnCloseModal);
+
+    return modal;
+  }
+  openModal() {
+    root.append(this.createModal());
+    overlay.classList.add("active");
+  }
+  closeModal() {
+    document.querySelector(".modal").remove();
+    overlay.classList.remove("active");
+  }
+}
+
+overlay.addEventListener("click", () => {
+  const modals = document.querySelectorAll(".modal");
+  modals.forEach((modal) => {
+    modal.remove();
+    overlay.classList.remove("active");
+  });
+});
+
 fetch("./books.json")
-  .then((response) => {
-    return response.json();
-  })
+  .then((response) => response.json())
   .then((data) => {
     function getListContent() {
       let fragment = new DocumentFragment();
 
       data.forEach(({ author, title, price, description, imageLink }, index) => {
-        fragment.append(renderCard({ author, title, price, description, imageLink }, index));
+        let card = new BookCard(author, title, price, description, imageLink);
+        books.push(card);
+        fragment.append(card.renderCard());
       });
       return fragment;
     }
     cardsList.append(getListContent());
   })
-
-  .catch((error) => {
-    console.log(error);
-  });
-
-function renderCard({ author, title, price, description, imageLink }, index) {
-  console.log(index);
-  let card = document.createElement("li");
-  card.classList.add("card__container");
-  card.setAttribute("id", `${index + 1}`); // change after
-  card.innerHTML = `
-<div class="card" data-id="01">
-  <img class="card__img" src="${imageLink}" alt="${title}">
-  <div class="card-body text-center">
-    <p class="item-autor zagolovok">${author}</p>
-    <h3 class="item-title zagolovok">${title}</h3>
-    <a href="" class="btn-link">
-      <button>Show more</button>
-    </a>
-
-    <div class="details-wrapper">
-      <div class="items counter-wrapper">
-        <div class="items__control" data-action="minus">-</div>
-          <div class="items__current" data-counter>1</div>
-          <div class="items__control" data-action="plus">+</div>
-      </div>
-      <div class="price">$ ${price}</div>
-    </div>
-
-    <button data-cart type="button" class="btn">+ в корзину</button>
-
-  </div>
-</div>
-`;
-  return card;
-}
+  .catch((error) => console.log(error));
