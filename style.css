@@ -407,102 +407,35 @@ body {
   text-align: center;
 }
 
-.header {
-  padding: 20px 0;
-}
-
-h1 {
-  font-size: 56px;
-  font-weight: 500;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.lead-text {
-  font-size: 20px;
-  font-weight: 300;
+.btn {
+  width: 100%;
   color: #fe9013;
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  transition: 200ms ease-in-out;
-  border-radius: 10px;
-  z-index: 10;
-  background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid #fe9013;
+  padding: 1rem;
+  font-size: 2rem;
   border-radius: 0.25rem;
-  width: 500px;
-  max-width: 80%;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn:hover {
+  color: white;
+  background-color: #fe9013;
 }
 
-.modal-header {
-  padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.btn-link {
+  font-size: 1.75rem;
+  color: #fe9013;
+  border: unset;
+  background: unset;
+  cursor: pointer;
   border-bottom: 1px solid #fe9013;
 }
-
-.modal-title {
-  font-family: "Merriweather", serif;
-  font-size: 2rem;
-  font-weight: 500;
-  text-align: center;
-}
-
-.modal-header .close-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: none;
-  font-size: 2.5rem;
+.btn-link:hover {
   color: #212529;
-}
-.modal-header .close-button:hover {
-  color: #fe9013;
-}
-
-.modal-body {
-  padding: 10px 15px;
-  font-family: "Merriweather", serif;
-  font-size: 18px;
-}
-
-h2 {
-  font-size: 48px;
-  font-weight: 300;
-  line-height: 1.2;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.catalog__container {
-  position: relative;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  flex: 0 0 66.666667%;
-  max-width: 66.666667%;
-}
-
-.order__container {
-  position: relative;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  flex: 0 0 33.333333%;
-  max-width: 33.333333%;
+  border-bottom: 1px solid #212529;
 }
 
 .card__container {
@@ -586,6 +519,12 @@ h2 {
   margin: 0 auto;
 }
 
+.price-wrapper {
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
 .items {
   font-family: "Merriweather", serif;
   background: #f2ede7;
@@ -611,41 +550,158 @@ h2 {
   width: 40px;
 }
 
-.price {
-  font-size: 2.5rem;
+.header {
+  padding: 20px 0;
+}
+
+h1 {
+  font-size: 56px;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
-.btn {
-  width: 100%;
+.lead-text {
+  font-size: 20px;
+  font-weight: 300;
   color: #fe9013;
-  vertical-align: middle;
-  user-select: none;
-  background-color: transparent;
-  cursor: pointer;
-  border: 1px solid #fe9013;
-  padding: 1rem;
-  font-size: 2rem;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: 200ms ease-in-out;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-.btn:hover {
-  color: white;
-  background-color: #fe9013;
+  width: 500px;
+  max-width: 80%;
 }
 
-.btn-link {
-  font-size: 1.75rem;
-  color: #fe9013;
-  border: unset;
-  background: unset;
-  cursor: pointer;
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #fe9013;
 }
-.btn-link:hover {
+
+.modal-title {
+  font-family: "Merriweather", serif;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 2.5rem;
   color: #212529;
-  border-bottom: 1px solid #212529;
+}
+.modal-header .close-button:hover {
+  color: #fe9013;
+}
+
+.modal-body {
+  padding: 10px 15px;
+  font-family: "Merriweather", serif;
+  font-size: 18px;
+}
+
+.order-container {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+.order-container h4 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.bin-card-wrapper {
+  padding: 15px 0;
+  border-bottom: 1px solid #dee2e6;
+}
+.bin-card-wrapper .bin-card {
+  margin-bottom: 15px;
+}
+
+.alert-secondary {
+  font-size: 1.6rem;
+  color: #383d41;
+  background-color: #e2e3e5;
+  border-color: #d6d8db;
+}
+
+.alert {
+  text-align: start;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.bin-card {
+  display: flex;
+  align-items: flex-start;
+}
+.bin-card .item-title {
+  font-size: 1.6rem;
+}
+
+.bin-card__img img {
+  max-width: 100px;
+  height: auto;
+}
+
+.card-total {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card-total {
+  padding: 1.5rem 0;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 2rem;
+  color: #fe9013;
+  text-align: start;
+  border-bottom: 1px solid #dee2e6;
+}
+
+h2 {
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.catalog-container {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
 }
 
 /*# sourceMappingURL=style.css.map */
