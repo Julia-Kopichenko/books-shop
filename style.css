@@ -481,8 +481,8 @@ body {
 .card-body .btn-link {
   text-align: start;
 }
-.card-body .item-autor, .card-body .item-title, .card-body .btn-link, .card-body .details-wrapper {
-  margin-bottom: 1.5rem;
+.card-body .item-title, .card-body .btn-link, .card-body .details-wrapper {
+  margin-bottom: 1rem;
 }
 .card-body .details-wrapper {
   margin-top: 15px;
@@ -615,7 +615,7 @@ h1 {
   font-size: 18px;
 }
 
-.order-container {
+.cart-container {
   position: relative;
   width: 100%;
   padding-right: 15px;
@@ -623,7 +623,7 @@ h1 {
   flex: 0 0 33.333333%;
   max-width: 33.333333%;
 }
-.order-container h4 {
+.cart-container h4 {
   font-size: 2rem;
   margin-bottom: 0.75rem;
 }
@@ -652,6 +652,10 @@ h1 {
   border-radius: 0.25rem;
 }
 
+.none {
+  display: none;
+}
+
 .bin-card {
   display: flex;
   align-items: flex-start;
@@ -670,14 +674,18 @@ h1 {
   font-weight: 500;
 }
 
+.bin-confirm {
+  padding-top: 15px;
+  border-top: 1px solid #dee2e6;
+}
+
 .card-total {
   padding: 1.5rem 0;
   font-weight: 500;
   line-height: 1.2;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #fe9013;
   text-align: start;
-  border-bottom: 1px solid #dee2e6;
 }
 
 h2 {

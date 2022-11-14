@@ -74,5 +74,7 @@ class BinCard {
     const count = card.querySelector(".count").innerText;
     decreaseTotalPrice(this.price * count);
     card.remove();
+    //Bin status display
+    toggleBinStatus();
   }
 }

@@ -10,7 +10,11 @@ class CatalogCard {
   renderCard() {
     let cardContainer = document.createElement("li");
     cardContainer.setAttribute("data-id", `${this.index + 1}`);
+    cardContainer.setAttribute("draggable", "true");
     cardContainer.classList.add("card__container");
+    // add eventListener on drag and drop
+    cardContainer.ondragend = (event) => this.addToBin(event);
+
     let card = document.createElement("div");
     card.classList.add("card");
     let img = document.createElement("img");
@@ -45,7 +49,7 @@ class CatalogCard {
     price.innerText = this.price;
     // Button Bin
     let btnBin = document.createElement("button");
-    btnBin.innerHTML = "+ в корзину";
+    btnBin.innerHTML = "Add to cart";
     btnBin.classList.add("btn");
     btnBin.addEventListener("click", (event) => this.addToBin(event));
 
@@ -89,10 +93,14 @@ class CatalogCard {
     } else {
       binWrapper.append(new BinCard(productInfo).renderCard());
     }
-
     increaseTotalPrice(productInfo.price * productInfo.count);
+    //Bin status display
+    toggleBinStatus();
     //reset the counter
     card.querySelector(".count").innerText = "1";
+  }
+  dragToBin(event) {
+    console.log("Drag");
   }
   openModal(title, description) {
     new Modal(title, description).openModal();

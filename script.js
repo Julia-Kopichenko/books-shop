@@ -14,4 +14,4 @@ main.append(maneContainer);
 maneContainer.append(row);
 
 row.append(bookCatalog);
-row.append(orderSection);
+row.append(cartSection);
