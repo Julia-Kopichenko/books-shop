@@ -1,30 +1,42 @@
-const header = document.createElement("header");
-header.classList.add("header");
+class Header {
+  constructor() {
+    this.header = createElement({
+      tag: "header",
+      classNames: ["header"],
+    });
+    this.headerContainer = createElement({
+      tag: "div",
+      classNames: ["container", "text-center"],
+    });
+    // logo
+    this.logo = addToDocumentFragment(
+      createElement({
+        tag: "img",
+        attributes: {
+          src: "./assets/images/logo-book.png",
+          height: "100%",
+          width: "100",
+          alt: "logo book",
+        },
+      })
+    );
+    this.h1 = createElement({
+      tag: "h1",
+      innerText: "world books",
+    });
+    // leadText
+    this.leadText = createElement({
+      tag: "p",
+      classNames: ["lead-text"],
+      innerText: "Welcome to amazing book shop!",
+    });
+  }
+  renderHeader() {
+    this.header.append(this.headerContainer);
+    this.headerContainer.append(this.logo);
+    this.headerContainer.append(this.h1);
+    this.headerContainer.append(this.leadText);
 
-const headerContainer = document.createElement("div");
-headerContainer.classList.add("container", "text-center");
-// logo
-const logo = document.createElement("img");
-logo.setAttribute("src", "./assets/images/logo-book.png");
-logo.setAttribute("width", "100");
-logo.setAttribute("alt", "logo book");
-// h1
-const h1 = document.createElement("h1");
-h1.innerText = "world books";
-headerContainer.append(h1);
-
-// let fragment = new DocumentFragment();
-// let title = document.createElement("h1");
-// title.innerText = "world books";
-// fragment.appendChild(title);
-// headerContainer.appendChild(fragment);
-
-// leadText
-const leadText = document.createElement("p");
-leadText.classList.add("lead-text");
-leadText.innerText = "Welcome to amazing book shop!";
-
-header.append(headerContainer);
-headerContainer.append(logo);
-headerContainer.append(h1);
-headerContainer.append(leadText);
+    return this.header;
+  }
+}

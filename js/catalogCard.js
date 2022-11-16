@@ -1,76 +1,96 @@
 class CatalogCard {
-  constructor(author, title, price, description, imageLink, index, ...classes) {
+  constructor({ author, title, price, description, imageLink }, index) {
     this.author = author;
     this.title = title;
     this.price = price;
-    this.imageLink = imageLink;
     this.description = description;
-    this.index = index;
+    this.imageLink = imageLink;
+
+    this.cardContainer = createElement({
+      tag: "li",
+      classNames: ["card__container"],
+      attributes: {
+        draggable: "true",
+        "data-id": index + 1,
+      },
+    });
+    this.card = createElement({
+      tag: "div",
+      classNames: ["card"],
+    });
+    this.cardImg = createElement({
+      tag: "img",
+      classNames: ["card__img"],
+      attributes: {
+        src: this.imageLink,
+        alt: this.title,
+      },
+    });
+    this.cardBody = createElement({
+      tag: "div",
+      classNames: ["card-body", "text-center"],
+    });
+    this.cardAutor = createElement({
+      tag: "p",
+      classNames: ["item-autor", "zagolovok"],
+      innerText: this.author,
+    });
+    this.cardTitle = createElement({
+      tag: "h3",
+      classNames: ["item-title", "zagolovok"],
+      innerText: this.title,
+    });
+    this.btnOpenModal = createElement({
+      tag: "button",
+      classNames: ["btn-link"],
+      innerHTML: "Show more",
+    });
+    this.detailsWrapper = createElement({
+      tag: "div",
+      classNames: ["details-wrapper"],
+    });
+    this.counter = new Counter().renderCounter();
+    this.priceWrapper = createElement({
+      tag: "div",
+      classNames: ["price-wrapper"],
+    });
+    this.priceText = createElement({
+      tag: "span",
+      innerText: "$ ",
+    });
+    this.price = createElement({
+      tag: "span",
+      classNames: ["price"],
+      innerText: this.price,
+    });
+    this.btnBin = createElement({
+      tag: "button",
+      classNames: ["btn"],
+      innerHTML: "Add to cart",
+    });
+
+    this.listenEvents();
   }
   renderCard() {
-    let cardContainer = document.createElement("li");
-    cardContainer.setAttribute("data-id", `${this.index + 1}`);
-    cardContainer.setAttribute("draggable", "true");
-    cardContainer.classList.add("card__container");
-    // add eventListener on drag and drop
-    cardContainer.ondragend = (event) => this.addToBin(event);
+    this.cardContainer.append(this.card);
+    this.card.append(this.cardImg);
+    this.card.append(this.cardBody);
+    this.cardBody.append(this.cardAutor);
+    this.cardBody.append(this.cardTitle);
+    this.cardBody.append(this.btnOpenModal);
+    this.cardBody.append(this.detailsWrapper);
+    this.cardBody.append(this.btnBin);
+    this.detailsWrapper.append(this.counter);
+    this.detailsWrapper.append(this.priceWrapper);
+    this.priceWrapper.append(this.priceText);
+    this.priceWrapper.append(this.price);
 
-    let card = document.createElement("div");
-    card.classList.add("card");
-    let img = document.createElement("img");
-    img.classList.add("card__img");
-    img.src = this.imageLink;
-    img.alt = this.title;
-    let cardBody = document.createElement("div");
-    cardBody.classList.add("card-body", "text-center");
-    let autor = document.createElement("p");
-    autor.classList.add("item-autor", "zagolovok");
-    autor.textContent = this.author;
-    let title = document.createElement("h3");
-    title.classList.add("item-title", "zagolovok");
-    title.textContent = this.title;
-    // Button show more
-    let btnOpenModal = document.createElement("button");
-    btnOpenModal.innerHTML = "Show more";
-    btnOpenModal.classList.add("btn-link");
-    btnOpenModal.addEventListener("click", () => this.openModal(this.title, this.description));
-    // Details
-    const detailsWrapper = document.createElement("div");
-    detailsWrapper.classList.add("details-wrapper");
-    // counter
-    const counter = new Counter().renderCounter();
-    // prise
-    const priseWrapper = document.createElement("div");
-    priseWrapper.classList.add("price-wrapper");
-    const priseText = document.createElement("span");
-    priseText.innerText = "$ ";
-    const price = document.createElement("span");
-    price.classList.add("price");
-    price.innerText = this.price;
-    // Button Bin
-    let btnBin = document.createElement("button");
-    btnBin.innerHTML = "Add to cart";
-    btnBin.classList.add("btn");
-    btnBin.addEventListener("click", (event) => this.addToBin(event));
-
-    cardContainer.append(card);
-
-    card.append(img);
-    card.append(cardBody);
-
-    cardBody.append(autor);
-    cardBody.append(title);
-    cardBody.append(btnOpenModal);
-    cardBody.append(detailsWrapper);
-    cardBody.append(btnBin);
-
-    detailsWrapper.append(counter);
-    detailsWrapper.append(priseWrapper);
-
-    priseWrapper.append(priseText);
-    priseWrapper.append(price);
-
-    return cardContainer;
+    return this.cardContainer;
+  }
+  listenEvents() {
+    this.cardContainer.addEventListener("dragend", (event) => this.addToBin(event));
+    this.btnOpenModal.addEventListener("click", () => this.openModal(this.title, this.description));
+    this.btnBin.addEventListener("click", (event) => this.addToBin(event));
   }
   addToBin(event) {
     const card = event.target.closest(".card__container");
@@ -99,10 +119,8 @@ class CatalogCard {
     //reset the counter
     card.querySelector(".count").innerText = "1";
   }
-  dragToBin(event) {
-    console.log("Drag");
-  }
   openModal(title, description) {
+    console.log(title);
     new Modal(title, description).openModal();
   }
 }

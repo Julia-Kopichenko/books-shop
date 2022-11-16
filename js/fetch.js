@@ -1,15 +1,16 @@
 fetch("./books.json")
   .then((response) => response.json())
   .then((data) => {
-    function getListContent() {
-      let fragment = new DocumentFragment();
-
-      data.forEach(({ author, title, price, description, imageLink }, index) => {
-        let card = new CatalogCard(author, title, price, description, imageLink, index);
-        fragment.append(card.renderCard());
-      });
-      return fragment;
-    }
-    cardsList.append(getListContent());
+    cardsList.append(getListContent(data));
   })
   .catch((error) => console.log(error));
+
+function getListContent(data) {
+  let fragment = new DocumentFragment();
+
+  data.forEach((data, index) => {
+    let card = new CatalogCard(data, index);
+    fragment.append(card.renderCard());
+  });
+  return fragment;
+}

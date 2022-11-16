@@ -1,42 +1,56 @@
 class Modal {
   constructor(title, description, ...classes) {
-    this.title = title;
-    this.description = description;
+    this.modal = createElement({
+      tag: "div",
+      classNames: ["modal"]
+    });
+    this.headerContainer = createElement({
+      tag: "div",
+      classNames: ["modal-header"]
+    });
+    // title
+    this.title = createElement({
+      tag: "div",
+      classNames: ["modal-title"],
+      innerText: title
+    });
+    // close button
+    this.btnCloseModal = createElement({
+      tag: "button",
+      classNames: ["close-button"],
+      innerHTML: "&times"
+    });
+    // description
+    this.description = createElement({
+      tag: "div",
+      classNames: ["modal-body"],
+      innerText: description
+    });
+
+    this.listenEvents();
+  }
+  listenEvents() {
+    this.btnCloseModal.addEventListener("click", () => this.closeModal());
   }
   createModal() {
-    const modal = document.createElement("div");
-    modal.classList.add("modal");
-    modal.setAttribute("id", "modal");
+    this.modal.append(this.headerContainer);
+    this.modal.append(this.description);
+    this.headerContainer.append(this.title);
+    this.headerContainer.append(this.btnCloseModal);
 
-    const headerContainer = document.createElement("div");
-    headerContainer.classList.add("modal-header");
-    // title
-    const title = document.createElement("div");
-    title.classList.add("modal-title");
-    title.textContent = this.title;
-    // close button
-    const btnCloseModal = document.createElement("button");
-    btnCloseModal.classList.add("close-button");
-    btnCloseModal.innerHTML = "&times";
-    btnCloseModal.onclick = () => this.closeModal();
-    // description
-    const description = document.createElement("div");
-    description.classList.add("modal-body");
-    description.textContent = this.description;
-    // append
-    modal.append(headerContainer);
-    modal.append(description);
-    headerContainer.append(title);
-    headerContainer.append(btnCloseModal);
-
-    return modal;
+    return this.modal;
   }
   openModal() {
+    const root = document.querySelector(".root");
+    const overlay = document.querySelector(".overlay");
+
     root.append(this.createModal());
     overlay.classList.add("active");
   }
   closeModal() {
-    document.querySelector(".modal").remove();
+    this.modal.remove();
+    const overlay = document.querySelector(".overlay");
+
     overlay.classList.remove("active");
   }
 }

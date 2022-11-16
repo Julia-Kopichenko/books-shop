@@ -6,9 +6,9 @@ maneContainer.classList.add("container", "text-center");
 const row = document.createElement("div");
 row.classList.add("row");
 
-root.append(header);
+root.append(new Header().renderHeader());
 root.append(main);
-root.append(overlay);
+root.append(new Overlay().renderOverlay());
 
 main.append(maneContainer);
 maneContainer.append(row);
