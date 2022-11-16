@@ -1,0 +1,30 @@
+.btn {
+  width: 100%;
+  color: $color-orange;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid $color-orange;
+  padding: 1rem;
+  font-size: 2rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  &:hover {
+    color: white;
+    background-color: $color-orange;
+  }
+}
+.btn-link {
+  font-size: 1.75rem;
+  color: $color-orange;
+  border: unset;
+  background: unset;
+  cursor: pointer;
+  border-bottom: 1px solid $color-orange;
+  &:hover {
+    color: $color-text;
+    border-bottom: 1px solid $color-text;
+  }
+}

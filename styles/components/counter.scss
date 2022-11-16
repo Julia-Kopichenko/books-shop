@@ -1,0 +1,22 @@
+.items {
+  font-family: "Merriweather", serif;
+  background: #f2ede7;
+  border-radius: 8px;
+  width: 120px;
+  display: flex;
+  font-size: 2rem;
+  height: 30px;
+  overflow: hidden;
+}
+.items__control {
+  width: 40px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+  text-align: center;
+  &:hover {
+    color: $color-orange;
+  }
+}
+.items__current {
+  width: 40px;
+}
