@@ -1,5 +1,5 @@
 function toggleBinStatus() {
-  const binWrapper = document.querySelector(".bin-card-lists");
+  const binWrapper = document.querySelector(".cart-lists");
   const cardAlert = document.querySelector(".alert");
   const cardConfirm = document.querySelector(".bin-confirm");
   if (binWrapper.children.length > 0) {

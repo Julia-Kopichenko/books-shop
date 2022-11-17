@@ -54,7 +54,7 @@ class CatalogCard {
   addToBin(event) {
     const card = event.target.closest(".card__container");
 
-    const binWrapper = document.querySelector(".bin-card-lists");
+    const binWrapper = document.querySelector(".cart-lists");
 
     const productInfo = {
       id: card.dataset.id,
@@ -65,13 +65,12 @@ class CatalogCard {
       count: card.querySelector(".count").innerText,
     };
     const itemInBin = binWrapper.querySelector(`[data-id = "${productInfo.id}"]`);
-    console.log(itemInBin);
     // if the item is in the bin and else
     if (itemInBin) {
       const counterElement = itemInBin.querySelector(".count");
       counterElement.innerText = +counterElement.innerText + +productInfo.count;
     } else {
-      binWrapper.append(new BinCard(productInfo).renderCard());
+      binWrapper.append(new CartCard(productInfo).renderCard());
     }
     increaseTotalPrice(productInfo.price * productInfo.count);
     //Bin status display

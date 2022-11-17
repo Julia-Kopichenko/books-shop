@@ -1,4 +1,4 @@
-class BinCard {
+class CartCard {
   constructor({ id, author, title, price, imageLink, count }) {
     this.id = id;
     this.author = author;

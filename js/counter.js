@@ -1,10 +1,12 @@
 class Counter {
-  constructor(count = 1) {
+  constructor(count) {
     this.count = count;
-    this.counter = Number.isInteger(this.count) ? this.count : 1;
 
     this.counterWrapper = newTag("div", { className: "counter-wrapper items" });
-    this.counter = newTag("div", { className: "items__control count", innerText: this.counter });
+    this.counter = newTag("div", {
+      className: "items__control count",
+      innerText: this.count === undefined ? 1 : this.count,
+    });
     this.btnMinus = newTag("div", { className: "items__control", innerText: "-" });
     this.btnPlus = newTag("div", { className: "items__control", innerText: "+" });
 

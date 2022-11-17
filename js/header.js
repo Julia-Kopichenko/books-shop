@@ -4,9 +4,9 @@ class Header {
     this.headerContainer = newTag("div", { className: "container text-center" });
     // logo
     this.logo = newTag("img", {
-      src: "./assets/images/logo-book.png",
-      height: "100%",
-      width: "100",
+      src: "../../assets/images/logo-book.png",
+      // height: "100",
+      width: "120",
       alt: "logo book",
     });
     this.h1 = newTag("h1", { innerText: "world books" });
