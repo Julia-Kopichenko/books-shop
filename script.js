@@ -1,17 +1,11 @@
-const root = document.querySelector(".root");
-const main = document.createElement("main");
-const maneContainer = document.createElement("div");
-maneContainer.classList.add("container", "text-center");
-//! row
-const row = document.createElement("div");
-row.classList.add("row");
+let fragment = new DocumentFragment();
 
-root.append(new Header().renderHeader());
-root.append(main);
-root.append(new Overlay().renderOverlay());
+const root = newTag("div", { className: "root" });
 
-main.append(maneContainer);
-maneContainer.append(row);
+root.append(new Header().render());
+root.append(new Main().render());
+root.append(new Overlay().render());
 
-row.append(bookCatalog);
-row.append(cartSection);
+fragment.append(root);
+
+document.body.append(fragment);

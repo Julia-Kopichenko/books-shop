@@ -35,7 +35,7 @@ class BinCard {
     const detailsWrapper = document.createElement("div");
     detailsWrapper.classList.add("details-wrapper");
     // counter
-    const counter = new Counter(this.count).renderCounter();
+    const counter = new Counter(this.count).render();
     // prise
     const priseWrapper = document.createElement("div");
     priseWrapper.classList.add("price-wrapper");

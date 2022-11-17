@@ -6,68 +6,27 @@ class CatalogCard {
     this.description = description;
     this.imageLink = imageLink;
 
-    this.cardContainer = createElement({
-      tag: "li",
-      classNames: ["card__container"],
-      attributes: {
-        draggable: "true",
-        "data-id": index + 1,
-      },
-    });
-    this.card = createElement({
-      tag: "div",
-      classNames: ["card"],
-    });
-    this.cardImg = createElement({
-      tag: "img",
-      classNames: ["card__img"],
-      attributes: {
-        src: this.imageLink,
-        alt: this.title,
-      },
-    });
-    this.cardBody = createElement({
-      tag: "div",
-      classNames: ["card-body", "text-center"],
-    });
-    this.cardAutor = createElement({
-      tag: "p",
-      classNames: ["item-autor", "zagolovok"],
-      innerText: this.author,
-    });
-    this.cardTitle = createElement({
-      tag: "h3",
-      classNames: ["item-title", "zagolovok"],
-      innerText: this.title,
-    });
-    this.btnOpenModal = createElement({
-      tag: "button",
-      classNames: ["btn-link"],
-      innerHTML: "Show more",
-    });
-    this.detailsWrapper = createElement({
-      tag: "div",
-      classNames: ["details-wrapper"],
-    });
-    this.counter = new Counter().renderCounter();
-    this.priceWrapper = createElement({
-      tag: "div",
-      classNames: ["price-wrapper"],
-    });
-    this.priceText = createElement({
-      tag: "span",
-      innerText: "$ ",
-    });
-    this.price = createElement({
-      tag: "span",
-      classNames: ["price"],
-      innerText: this.price,
-    });
-    this.btnBin = createElement({
-      tag: "button",
-      classNames: ["btn"],
-      innerHTML: "Add to cart",
-    });
+    this.cardContainer = newTag("li", { className: "card__container", draggable: "true" });
+    this.cardContainer.setAttribute("data-id", `${index + 1}`);
+    this.card = newTag("div", { className: "card" });
+    // img
+    this.cardImg = newTag("img", { className: "card__img", src: this.imageLink, alt: this.title });
+    // card body
+    this.cardBody = newTag("div", { className: "card-body text-center" });
+    this.cardAutor = newTag("p", { className: "item-autor zagolovok", innerText: this.author });
+    this.cardTitle = newTag("h3", { className: "item-title zagolovok", innerText: this.title });
+    // btn open modal
+    this.btnOpenModal = newTag("button", { className: "btn-link", innerHTML: "Show more" });
+    // details
+    this.detailsWrapper = newTag("div", { className: "details-wrapper" });
+    // counter
+    this.counter = new Counter().render();
+    // price
+    this.priceWrapper = newTag("div", { className: "price-wrapper" });
+    this.priceText = newTag("span", { innerText: "$ " });
+    this.price = newTag("span", { className: "price", innerText: this.price });
+    // button add to cart
+    this.btnBin = newTag("button", { className: "btn", innerHTML: "Add to cart" });
 
     this.listenEvents();
   }
@@ -106,6 +65,7 @@ class CatalogCard {
       count: card.querySelector(".count").innerText,
     };
     const itemInBin = binWrapper.querySelector(`[data-id = "${productInfo.id}"]`);
+    console.log(itemInBin);
     // if the item is in the bin and else
     if (itemInBin) {
       const counterElement = itemInBin.querySelector(".count");

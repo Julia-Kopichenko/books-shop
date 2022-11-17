@@ -1,6 +1,7 @@
 fetch("./books.json")
   .then((response) => response.json())
   .then((data) => {
+    const cardsList = document.querySelector(".cards__list");
     cardsList.append(getListContent(data));
   })
   .catch((error) => console.log(error));
