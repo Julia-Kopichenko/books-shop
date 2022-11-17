@@ -712,4 +712,12 @@ h2 {
   max-width: 66.666667%;
 }
 
+.form-container {
+  margin: auto;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 60%;
+}
+
 /*# sourceMappingURL=style.css.map */

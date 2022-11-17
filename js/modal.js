@@ -1,38 +1,20 @@
 class Modal {
   constructor(title, description, ...classes) {
-    this.modal = createElement({
-      tag: "div",
-      classNames: ["modal"]
-    });
-    this.headerContainer = createElement({
-      tag: "div",
-      classNames: ["modal-header"]
-    });
+    this.modal = newTag("div", { className: "modal" });
+    this.headerContainer = newTag("div", { className: "modal-header" });
     // title
-    this.title = createElement({
-      tag: "div",
-      classNames: ["modal-title"],
-      innerText: title
-    });
+    this.title = newTag("div", { className: "modal-title", innerText: title });
     // close button
-    this.btnCloseModal = createElement({
-      tag: "button",
-      classNames: ["close-button"],
-      innerHTML: "&times"
-    });
+    this.btnCloseModal = newTag("button", { className: "close-button", innerHTML: "&times" });
     // description
-    this.description = createElement({
-      tag: "div",
-      classNames: ["modal-body"],
-      innerText: description
-    });
+    this.description = newTag("div", { className: "modal-body", innerText: description });
 
     this.listenEvents();
   }
   listenEvents() {
     this.btnCloseModal.addEventListener("click", () => this.closeModal());
   }
-  createModal() {
+  render() {
     this.modal.append(this.headerContainer);
     this.modal.append(this.description);
     this.headerContainer.append(this.title);
@@ -44,7 +26,7 @@ class Modal {
     const root = document.querySelector(".root");
     const overlay = document.querySelector(".overlay");
 
-    root.append(this.createModal());
+    root.append(this.render());
     overlay.classList.add("active");
   }
   closeModal() {

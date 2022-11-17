@@ -1,21 +1,9 @@
-// const overlay = document.createElement("div");
-// overlay.classList.add("overlay");
-
-// overlay.addEventListener("click", () => {
-//   const modals = document.querySelectorAll(".modal");
-//   modals.forEach((modal) => {
-//     modal.remove();
-//     overlay.classList.remove("active");
-//   });
-// });
-
 class Overlay {
   constructor() {
-    this.overlay = document.createElement("div");
-    this.overlay.classList.add("overlay");
+    this.overlay = newTag("div", { className: "overlay" });
     this.listenEvents();
   }
-  renderOverlay() {
+  render() {
     return this.overlay;
   }
   listenEvents() {

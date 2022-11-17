@@ -1,37 +1,18 @@
 class Header {
   constructor() {
-    this.header = createElement({
-      tag: "header",
-      classNames: ["header"],
-    });
-    this.headerContainer = createElement({
-      tag: "div",
-      classNames: ["container", "text-center"],
-    });
+    this.header = newTag("header", { className: "header" });
+    this.headerContainer = newTag("div", { className: "container text-center" });
     // logo
-    this.logo = addToDocumentFragment(
-      createElement({
-        tag: "img",
-        attributes: {
-          src: "./assets/images/logo-book.png",
-          height: "100%",
-          width: "100",
-          alt: "logo book",
-        },
-      })
-    );
-    this.h1 = createElement({
-      tag: "h1",
-      innerText: "world books",
+    this.logo = newTag("img", {
+      src: "../../assets/images/logo-book.png",
+      // height: "100",
+      width: "120",
+      alt: "logo book",
     });
-    // leadText
-    this.leadText = createElement({
-      tag: "p",
-      classNames: ["lead-text"],
-      innerText: "Welcome to amazing book shop!",
-    });
+    this.h1 = newTag("h1", { innerText: "world books" });
+    this.leadText = newTag("p", { className: "lead-text", innerText: "Welcome to amazing book shop!" });
   }
-  renderHeader() {
+  render() {
     this.header.append(this.headerContainer);
     this.headerContainer.append(this.logo);
     this.headerContainer.append(this.h1);
