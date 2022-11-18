@@ -6,7 +6,6 @@
   flex: 0 0 33.333333%;
   max-width: 33.333333%;
   & h4 {
-    font-size: 2rem;
     margin-bottom: 0.75rem;
   }
 }
@@ -15,6 +14,9 @@
   border-bottom: 1px solid #dee2e6;
   & .bin-card {
     margin-bottom: 15px;
+  }
+  & .details-wrapper {
+    width: 100%;
   }
 }
 
@@ -39,13 +41,18 @@
   display: flex;
   align-items: flex-start;
   & .item-title {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
+  }
+  & .price-wrapper {
+    text-align: end;
   }
 }
 .bin-card__img img {
   max-width: 100px;
   height: auto;
+  padding-right: 1rem;
 }
+
 .card-total {
   font-size: 18px;
   font-weight: 500;
@@ -60,7 +67,7 @@
   padding: 1.5rem 0;
   font-weight: 500;
   line-height: 1.2;
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: $color-orange;
   text-align: start;
 }

@@ -29,5 +29,6 @@ function getFromLocalStorage() {
 // add cards to Cart
 getFromLocalStorage().forEach((productInfo) => {
   cartLists.append(new CartCard(productInfo).renderCard());
+  toggleBinStatus();
 });
 // ------------------------------------------------------
