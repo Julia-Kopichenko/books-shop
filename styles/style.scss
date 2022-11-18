@@ -13,36 +13,3 @@
 @import "./layouts/modal.scss";
 @import "./layouts/sectionsCart.scss";
 @import "./layouts/orderForm.scss";
-
-h2 {
-  font-size: 48px;
-  font-weight: 300;
-  line-height: 1.2;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.catalog-container {
-  position: relative;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  flex: 0 0 66.666667%;
-  max-width: 66.666667%;
-}
-
-.form-container {
-  margin: auto;
-  // position: relative;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  // flex: 0 0 66.666667%;
-  max-width: 60%;
-}

@@ -1,7 +1,7 @@
 .items {
   font-family: "Merriweather", serif;
-  background: #f2ede7;
-  border-radius: 8px;
+  background: #f8f9f9;
+  border-radius: 0.25rem;
   width: 120px;
   display: flex;
   font-size: 2rem;
@@ -17,6 +17,7 @@
     color: $color-orange;
   }
 }
+
 .items__current {
   width: 40px;
 }

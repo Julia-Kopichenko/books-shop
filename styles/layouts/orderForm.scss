@@ -1,8 +1,5 @@
-// .form-container {
-//   position: relative;
-//   width: 100%;
-//   padding-right: 15px;
-//   padding-left: 15px;
-//   flex: 0 0 66.666667%;
-//   max-width: 66.666667%;
-// }
+.card {
+  & h4 {
+    margin-bottom: 0.75rem;
+  }
+}

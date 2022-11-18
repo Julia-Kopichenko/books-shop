@@ -23,7 +23,7 @@ class CatalogCard {
     this.counter = new Counter().render();
     // price
     this.priceWrapper = newTag("div", { className: "price-wrapper" });
-    this.priceText = newTag("span", { innerText: "$ " });
+    this.priceText = newTag("span", { innerText: " $" });
     this.price = newTag("span", { className: "price", innerText: this.price });
     // button add to cart
     this.btnBin = newTag("button", { className: "btn", innerHTML: "Add to cart" });
@@ -41,8 +41,8 @@ class CatalogCard {
     this.cardBody.append(this.btnBin);
     this.detailsWrapper.append(this.counter);
     this.detailsWrapper.append(this.priceWrapper);
-    this.priceWrapper.append(this.priceText);
     this.priceWrapper.append(this.price);
+    this.priceWrapper.append(this.priceText);
 
     return this.cardContainer;
   }

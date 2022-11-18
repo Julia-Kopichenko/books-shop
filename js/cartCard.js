@@ -6,75 +6,36 @@ class CartCard {
     this.price = price;
     this.imageLink = imageLink;
     this.count = count;
+
+    this.cardContainer = newTag("li", { className: "bin-card-wrapper" });
+    this.cardContainer.setAttribute("data-id", `${this.id}`);
+    this.card = newTag("div", { className: "bin-card" });
+    this.imgWrapper = newTag("div", { className: "bin-card__img" });
+    this.img = newTag("img", { src: this.imageLink, alt: this.title });
+    this.cardBody = newTag("div", { className: "card-body text-center" });
+    this.cardAuthor = newTag("p", { className: "item-autor zagolovok", innerText: this.author });
+    this.cardTitle = newTag("h3", { className: "item-title zagolovok", innerText: this.title });
+    this.detailsWrapper = newTag("div", { className: "details-wrapper" });
+    this.counter = new Counter(this.count).render();
+    this.priceWrapper = newTag("div", { className: "price-wrapper" });
+    this.priceText = newTag("span", { innerText: " $" });
+    this.price = newTag("span", { className: "price", innerText: this.price });
+    this.btnRemove = new ButtonRemove("delete").render();
   }
   renderCard() {
-    const binCard = document.createElement("li");
-    binCard.classList.add("bin-card-wrapper");
-    binCard.setAttribute("data-id", `${this.id}`);
+    this.cardContainer.append(this.card);
+    this.cardContainer.append(this.detailsWrapper);
+    this.card.append(this.imgWrapper);
+    this.card.append(this.cardBody);
+    this.imgWrapper.append(this.img);
+    this.cardBody.append(this.cardAuthor);
+    this.cardBody.append(this.cardTitle);
+    this.cardBody.append(this.priceWrapper);
+    this.detailsWrapper.append(this.counter);
+    this.detailsWrapper.append(this.btnRemove);
+    this.priceWrapper.append(this.price);
+    this.priceWrapper.append(this.priceText);
 
-    const aboutWrapper = document.createElement("div");
-    aboutWrapper.classList.add("bin-card");
-
-    const imgWrapper = document.createElement("div");
-    imgWrapper.classList.add("bin-card__img");
-    const img = document.createElement("img");
-    img.src = this.imageLink;
-    img.alt = this.title;
-
-    let cardBody = document.createElement("div");
-    cardBody.classList.add("card-body", "text-center");
-    // Autor
-    let autor = document.createElement("p");
-    autor.classList.add("item-autor", "zagolovok");
-    autor.textContent = this.author;
-    // Title
-    let title = document.createElement("h3");
-    title.classList.add("item-title", "zagolovok");
-    title.textContent = this.title;
-    // Details
-    const detailsWrapper = document.createElement("div");
-    detailsWrapper.classList.add("details-wrapper");
-    // counter
-    const counter = new Counter(this.count).render();
-    // prise
-    const priseWrapper = document.createElement("div");
-    priseWrapper.classList.add("price-wrapper");
-    const priseText = document.createElement("span");
-    priseText.innerText = "$ ";
-    const price = document.createElement("span");
-    price.classList.add("price");
-    price.innerText = this.price;
-    // Button Bin
-    let btnBin = document.createElement("button");
-    btnBin.innerHTML = "delete";
-    btnBin.classList.add("btn");
-    btnBin.onclick = (event) => this.deleteCard(event);
-
-    binCard.append(aboutWrapper);
-    binCard.append(btnBin);
-
-    aboutWrapper.append(imgWrapper);
-    aboutWrapper.append(cardBody);
-
-    imgWrapper.append(img);
-
-    cardBody.append(autor);
-    cardBody.append(title);
-    cardBody.append(detailsWrapper);
-
-    detailsWrapper.append(counter);
-    detailsWrapper.append(priseWrapper);
-    priseWrapper.append(priseText);
-    priseWrapper.append(price);
-
-    return binCard;
-  }
-  deleteCard(event) {
-    const card = event.target.closest(".bin-card-wrapper");
-    const count = card.querySelector(".count").innerText;
-    decreaseTotalPrice(this.price * count);
-    card.remove();
-    //Bin status display
-    toggleBinStatus();
+    return this.cardContainer;
   }
 }
