@@ -1,18 +1,15 @@
 const root = document.querySelector(".root");
 root.prepend(new Header().render());
+root.append(new Overlay().render());
 
 const row = document.querySelector(".row");
 
 // add cart
-row.append(new Cart().render());
+row.append(new Cart().renderToOrderPage());
 
-// add changes to cart
-const cardAlert = document.querySelector(".alert");
-const cardConfirm = document.querySelector(".bin-confirm");
+// add totalPrice
 const totalPrice = document.querySelector(".total__price");
 
-cardAlert.classList.add("none");
-cardConfirm.classList.add("none");
 totalPrice.innerHTML = localStorage.getItem("totalPrice");
 // -----------------------------------------------------------
 
@@ -26,9 +23,8 @@ function getFromLocalStorage() {
   return products;
 }
 
-// add cards to Cart
+// add products to Cart
 getFromLocalStorage().forEach((productInfo) => {
-  cartLists.append(new CartCard(productInfo).renderCard());
-  toggleBinStatus();
+  cartLists.append(new CartCard(productInfo).renderCardToOrderPage());
 });
 // ------------------------------------------------------

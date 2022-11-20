@@ -1,9 +1,9 @@
 class Cart {
   constructor() {
     this.cart = newTag("section", { className: "cart-container" });
-    this.title = newTag("h2", { innerText: "Cart" });
+    this.title = newTag("h2", { className: "text-center", innerText: "Cart" });
     this.binWrapper = newTag("div", { className: "card" });
-    this.binTitle = newTag("h4", { innerText: "Your order" });
+    this.binTitle = newTag("h4", { className: "text-center", innerText: "Your order" });
     this.binAlert = newTag("div", { className: "alert alert-secondary", innerText: "Cart is empty" });
     this.binCardsList = newTag("ul", { className: "cart-lists" });
     this.binTotalWrapper = newTag("div", { className: "card-total" });
@@ -43,6 +43,19 @@ class Cart {
 
     return this.cart;
   }
+  renderToOrderPage() {
+    this.cart.append(this.title);
+    this.cart.append(this.binWrapper);
+    this.binWrapper.append(this.binTitle);
+    this.binWrapper.append(this.binCardsList);
+    this.binWrapper.append(this.wrapper);
+    this.wrapper.append(this.binTotalWrapper);
+    this.binTotalWrapper.append(this.totalText);
+    this.binTotalWrapper.append(this.totalPrice);
+    this.binTotalWrapper.append(this.totalDollars);
+
+    return this.cart;
+  }
   listenEvents() {
     this.binWrapper.ondragover = (event) => event.preventDefault();
     this.btnConfirm.addEventListener("click", () => {
@@ -75,7 +88,6 @@ class Cart {
   setToLocalStorage() {
     const arrayProducts = this.getOrderList();
     const totalPrice = this.getTotalPrice();
-
     localStorage.setItem("storedProducts", JSON.stringify(arrayProducts));
     localStorage.setItem("totalPrice", totalPrice);
   }

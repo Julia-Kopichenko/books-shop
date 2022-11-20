@@ -79,7 +79,6 @@ class CatalogCard {
     card.querySelector(".count").innerText = "1";
   }
   openModal(title, description) {
-    console.log(title);
     new Modal(title, description).openModal();
   }
 }
