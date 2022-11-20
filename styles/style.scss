@@ -1,9 +1,10 @@
+// helpers
+@import "./helpers/constants.scss";
+@import "./helpers/mixins.scss";
 // base
 @import "./base/normalaize.scss";
 @import "./base/fonts.scss";
 @import "./base/base.scss";
-// helpers
-@import "./helpers/constants.scss";
 // components
 @import "./components/buttons.scss";
 @import "./components/catalogCard.scss";

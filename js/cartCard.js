@@ -17,10 +17,16 @@ class CartCard {
     this.cardTitle = newTag("h3", { className: "item-title zagolovok", innerText: this.title });
     this.detailsWrapper = newTag("div", { className: "details-wrapper" });
     this.counter = new Counter(this.count).render();
+
     this.priceWrapper = newTag("div", { className: "price-wrapper" });
     this.priceText = newTag("span", { innerText: " $" });
     this.price = newTag("span", { className: "price", innerText: this.price });
     this.btnRemove = new ButtonRemove("delete").render();
+    // for order page
+    // Total count
+    this.totalCountWrapper = newTag("div", { className: "price-wrapper" });
+    this.totalText = newTag("span", { className: "total__text", innerHTML: "Count:  " });
+    this.totalCount = newTag("span", { className: "total__price", innerHTML: this.count });
   }
   renderCard() {
     this.cardContainer.append(this.card);
@@ -33,6 +39,22 @@ class CartCard {
     this.cardBody.append(this.priceWrapper);
     this.detailsWrapper.append(this.counter);
     this.detailsWrapper.append(this.btnRemove);
+    this.priceWrapper.append(this.price);
+    this.priceWrapper.append(this.priceText);
+
+    return this.cardContainer;
+  }
+  renderCardToOrderPage() {
+    this.cardContainer.append(this.card);
+    this.cardContainer.append(this.totalCountWrapper);
+    this.card.append(this.imgWrapper);
+    this.card.append(this.cardBody);
+    this.imgWrapper.append(this.img);
+    this.cardBody.append(this.cardAuthor);
+    this.cardBody.append(this.cardTitle);
+    this.cardBody.append(this.priceWrapper);
+    this.totalCountWrapper.append(this.totalText);
+    this.totalCountWrapper.append(this.totalCount);
     this.priceWrapper.append(this.price);
     this.priceWrapper.append(this.priceText);
 

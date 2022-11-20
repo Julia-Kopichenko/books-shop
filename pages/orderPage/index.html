@@ -14,19 +14,50 @@
 <body>
   <div class="root">
     <main>
-      <div class="container text-center">
+      <div class="container">
         <div class="row">
           <div class="catalog-container">
-            <h2>Order Form</h2>
+            <h2 class="text-center">Order Form</h2>
             <div class="card">
-              <h4>Please fill out the form</h4>
-              <form id="form" action="">
-                <label for="">
-                  name
-                  <input type="text">
-                </label>
-                <input type="submit" value="Submit">
-                <input type="reset" value="Reset">
+              <h4 class="text-center">Please fill out the form</h4>
+              <form id="form" novalidate>
+                <div class="form__text-block">
+
+                  <label for="name">Name</label>
+                  <input type="text" name="name" id="name" placeholder="Name" pattern='^[A-Za-z]{4,}$' required>
+                  <span class="error-message none">Strings only, without spaces,the length not less than 4</span>
+
+                  <label for="surname">Surname</label>
+                  <input type="text" name="surname" id="surname" placeholder="Surname" pattern='^[A-Za-z]{5,}$'
+                    required>
+                  <span class="error-message none">Strings only, without spaces,the length not less than 5</span>
+                  <!-- Delivery date -->
+                  <label for="delivery-date">Delivery date</label>
+                  <input type="date" id="delivery-date" name="delivery-date" required />
+                  <span class="confirm-message none">Not earlier than next day</span>
+                  <!-- Street -->
+                  <label for="street">Street</label>
+                  <input type="text" name="street" id="street" placeholder="Street" required
+                    pattern="^[0-9a-zA-Z]{5,}$">
+                  <span class="error-message none">Street should be at least 5 characters</span>
+                  <!-- House number -->
+                  <label for="houseNum">House number</label>
+                  <input type="text" name="houseNum" id="houseNum" placeholder="House number" required
+                    pattern="^[1-9]+[0-9]*$">
+                  <span class="error-message none">Only positive numbers</span>
+                  <!-- Flat number -->
+                  <label for="flatNum">Flat number</label>
+                  <input type="text" name="flatNum" id="flatNum" placeholder="Flat number" required
+                    pattern="^[1-9–]+[-0-9–]*$">
+                  <span class="error-message none">Only positive numbers,dash symbol is allowed</span>
+
+
+                </div>
+                <div class="form__button-type">
+                  <input type="submit" class="btn" id="btn-submit" name="btn-submit" value="Confirm" disabled>
+                  <input type="reset" value="Reset" class="btn" id="btn-reset">
+                </div>
+
               </form>
             </div>
           </div>
@@ -36,8 +67,10 @@
   </div>
 
   <script src="../../js/toggleBinStatus.js"></script>
+  <script src="../../js/overlay.js"></script>
   <script src="../../js/orderForm.js"></script>
   <script src="../../js/createElement.js"></script>
+  <script src="../../js/modal.js"></script>
   <script src="../../js/header.js"></script>
   <script src="../../js/counter.js"></script>
   <script src="../../js/cartCard.js"></script>

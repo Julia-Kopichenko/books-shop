@@ -3,3 +3,75 @@
     margin-bottom: 0.75rem;
   }
 }
+.form__text-block {
+  margin-bottom: 3.5rem;
+}
+label {
+  text-align: start;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: $color-text-light;
+  opacity: 0.7;
+}
+input {
+  height: 40px;
+  margin-bottom: 10px;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  border: $border;
+  border-radius: 2px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 1.6rem;
+  line-height: 140%;
+  padding: 9px 17px 9px 16px;
+  color: $color-text-light;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 2px auto $color-orange;
+  box-shadow: $box-shadow;
+  color: $color-text;
+  &:valid {
+    border: 1px solid green;
+  }
+  &:invalid {
+    border: 1px solid red;
+  }
+}
+
+.error-message {
+  display: block;
+  color: $color-red;
+  font-size: 12px;
+  margin-bottom: 5px;
+  &.none {
+    display: none;
+  }
+}
+.form__button-type {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  & .btn {
+    cursor: pointer;
+    width: 180px;
+  }
+
+  & .btn:first-child {
+    margin-right: 1rem;
+  }
+}
+
+.btn:disabled {
+  color: $color-text-light;
+  background-color: $background-color;
+  border: $border;
+  pointer-events: none;
+}

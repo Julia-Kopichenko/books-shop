@@ -448,9 +448,9 @@ h4 {
   border-radius: 0.25rem;
   text-align: center;
   font: italic 14px/1.3 sans-serif;
-  color: #333;
+  color: #474747;
   background: #f8f9f9;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 button {
@@ -759,6 +759,86 @@ h1 {
 
 .card h4 {
   margin-bottom: 0.75rem;
+}
+
+.form__text-block {
+  margin-bottom: 3.5rem;
+}
+
+label {
+  text-align: start;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #474747;
+  opacity: 0.7;
+}
+
+input {
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 2px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 1.6rem;
+  line-height: 140%;
+  padding: 9px 17px 9px 16px;
+  color: #474747;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 2px auto #fe9013;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  color: #212529;
+}
+input:focus:valid,
+textarea:focus:valid,
+select:focus:valid {
+  border: 1px solid green;
+}
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+  border: 1px solid red;
+}
+
+.error-message {
+  display: block;
+  color: red;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.error-message.none {
+  display: none;
+}
+
+.form__button-type {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.form__button-type .btn {
+  cursor: pointer;
+  width: 180px;
+}
+.form__button-type .btn:first-child {
+  margin-right: 1rem;
+}
+
+.btn:disabled {
+  color: #474747;
+  background-color: #f8f9f9;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=style.css.map */
