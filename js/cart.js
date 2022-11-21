@@ -57,7 +57,10 @@ class Cart {
     return this.cart;
   }
   listenEvents() {
+    //  DRAG AND DROP
     this.binWrapper.ondragover = (event) => event.preventDefault();
+    this.binWrapper.ondragenter = (event) => event.preventDefault();
+
     this.btnConfirm.addEventListener("click", () => {
       this.openOrderPage();
       this.setToLocalStorage();

@@ -3,6 +3,7 @@ class Header {
     this.header = newTag("header", { className: "header" });
     this.headerContainer = newTag("div", { className: "container text-center" });
     // logo
+    this.logoLink = newTag("a", { className: "logo-link", href: "../main/index.html", title: "home" });
     this.logo = newTag("img", {
       src: "../../assets/images/logo-book.png",
       // height: "100",
@@ -14,7 +15,8 @@ class Header {
   }
   render() {
     this.header.append(this.headerContainer);
-    this.headerContainer.append(this.logo);
+    this.headerContainer.append(this.logoLink);
+    this.logoLink.append(this.logo);
     this.headerContainer.append(this.h1);
     this.headerContainer.append(this.leadText);
 

@@ -23,10 +23,9 @@ class Modal {
     return this.modal;
   }
   openModal() {
-    const root = document.querySelector(".root");
     const overlay = document.querySelector(".overlay");
 
-    root.append(this.render());
+    document.body.append(this.render());
     overlay.classList.add("active");
   }
   closeModal() {

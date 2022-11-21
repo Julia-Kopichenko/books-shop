@@ -6,7 +6,9 @@
 .form__text-block {
   margin-bottom: 3.5rem;
 }
-label {
+// label
+label,
+legend {
   text-align: start;
   font-weight: 500;
   font-size: 14px;
@@ -14,13 +16,11 @@ label {
   color: $color-text-light;
   opacity: 0.7;
 }
-input {
+// inputs
+input[type="text"],
+input[type="date"] {
   height: 40px;
   margin-bottom: 10px;
-}
-input,
-textarea,
-select {
   width: 100%;
   border: $border;
   border-radius: 2px;
@@ -29,23 +29,54 @@ select {
   line-height: 140%;
   padding: 9px 17px 9px 16px;
   color: $color-text-light;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none;
-  border: 2px auto $color-orange;
-  box-shadow: $box-shadow;
-  color: $color-text;
-  &:valid {
-    border: 1px solid green;
+  &:hover {
+    border: 1px solid $color-orange;
   }
-  &:invalid {
+  &:focus {
+    outline: none;
+    border: 2px auto $color-orange;
+    box-shadow: $box-shadow;
+    color: $color-text;
+    &:required {
+      border: 1px solid $color-orange;
+      &.invalid {
+        border: 1px solid red;
+      }
+    }
+    &:required:valid {
+      border: 1px solid green;
+    }
+  }
+  &.invalid {
     border: 1px solid red;
   }
 }
+#paymentType {
+  display: flex;
+  align-items: flex-start;
+  border: $border;
+  border-radius: 2px;
+  & label {
+    margin-right: 35px;
+    line-height: 27px;
+  }
+}
+input[type="radio"] {
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
+  &:checked {
+    border: 4px solid $color-orange;
+  }
+}
 
+// error message
 .error-message {
   display: block;
   color: $color-red;
@@ -55,6 +86,7 @@ select:focus {
     display: none;
   }
 }
+// buttons
 .form__button-type {
   display: flex;
   justify-content: space-between;
@@ -62,16 +94,16 @@ select:focus {
   & .btn {
     cursor: pointer;
     width: 180px;
+    margin-bottom: 1.5rem;
+    &:disabled {
+      color: $color-text-light;
+      background-color: $background-color;
+      border: $border;
+      pointer-events: none;
+    }
   }
 
   & .btn:first-child {
     margin-right: 1rem;
   }
-}
-
-.btn:disabled {
-  color: $color-text-light;
-  background-color: $background-color;
-  border: $border;
-  pointer-events: none;
 }

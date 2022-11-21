@@ -4,14 +4,19 @@ const btnSubmit = document.getElementById("btn-submit");
 const btnReset = document.getElementById("btn-reset");
 
 // add listeners
-form.addEventListener("input", inputHandler);
+allInput.forEach((input) => {
+  if (!input.classList.contains("btn")) {
+    input.addEventListener("blur", inputHandler);
+    input.addEventListener("input", inputHandler);
+  }
+});
 btnSubmit.addEventListener("click", buttonSubmitHandler);
 btnReset.addEventListener("click", clearForm);
 
-// add attribute "is-valid" to inputs
+// add attribute "is-valid" to inputs with "required"
 const validInputArr = [];
 allInput.forEach((element) => {
-  if (!element.classList.contains("btn")) {
+  if (element.hasAttribute("required")) {
     element.setAttribute("is-valid", "0");
     validInputArr.push(element);
   }
@@ -21,7 +26,8 @@ allInput.forEach((element) => {
 const date = document.getElementById("delivery-date");
 const date_now = new Date();
 date.value = date_now.getFullYear() + "-" + (date_now.getMonth() + 1) + "-" + (date_now.getDate() + 1);
-date.setAttribute("min", date_now.getFullYear() + "-" + (date_now.getMonth() + 2) + "-" + (date_now.getDate() + 1));
+date.setAttribute("min", date_now.getFullYear() + "-" + (date_now.getMonth() + 1) + "-" + (date_now.getDate() + 1));
+date.setAttribute("max", date_now.getFullYear() + "-" + (date_now.getMonth() + 2) + "-" + (date_now.getDate() + 1));
 
 // check all inputs for validity
 function allInputsAreValid() {
@@ -29,10 +35,15 @@ function allInputsAreValid() {
   validInputArr.forEach((el) => {
     isAllValid.push(el.getAttribute("is-valid"));
   });
-  const isValid = isAllValid.reduce((acc, current) => {
-    return acc && current;
+  const isValid = isAllValid.every((el) => {
+    if (el == 1) {
+      return true;
+    } else {
+      return false;
+    }
   });
-  if (Boolean(Number(isValid))) {
+
+  if (isValid) {
     btnSubmit.removeAttribute("disabled");
   } else {
     btnSubmit.setAttribute("disabled", "disabled");
@@ -60,22 +71,21 @@ function buttonSubmitHandler(event) {
   // open summarized information
   new Modal("The order created", description.innerHTML).openModal();
 }
-
 // input handler
 function inputHandler({ target }) {
-  const errorMessage = target.nextElementSibling;
-  if (!target.validity.valueMissing && !target.validity.patternMismatch) {
-    errorMessage.classList.add("none");
-    target.setAttribute("is-valid", "1");
-    allInputsAreValid();
-
-    // if (target.validity.valueMissing) {
-    //   console.log("заполните поле");
-    // }
-  } else {
-    errorMessage.classList.remove("none");
-    target.setAttribute("is-valid", "0");
-    allInputsAreValid();
+  if (target.hasAttribute("required")) {
+    errorMessage = target.nextElementSibling;
+    if (target.checkValidity()) {
+      errorMessage.classList.add("none");
+      target.classList.remove("invalid");
+      target.setAttribute("is-valid", "1");
+      allInputsAreValid();
+    } else {
+      errorMessage.classList.remove("none");
+      target.setAttribute("is-valid", "0");
+      target.classList.add("invalid");
+      allInputsAreValid();
+    }
   }
 }
 
@@ -84,8 +94,11 @@ function clearForm() {
   allInput.forEach((input) => {
     if (!input.classList.contains("btn")) {
       input.value = "";
-      input.setAttribute("is-valid", "0");
-      input.nextElementSibling.classList.add("none");
+      if (input.hasAttribute("required")) {
+        input.setAttribute("is-valid", "0");
+        input.classList.remove("invalid");
+        input.nextElementSibling.classList.add("none");
+      }
       btnSubmit.setAttribute("disabled", "disabled");
     }
   });

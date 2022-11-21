@@ -1,0 +1,1 @@
+const fragment = new DocumentFragment();

@@ -47,13 +47,14 @@ class CatalogCard {
     return this.cardContainer;
   }
   listenEvents() {
+    //  DRAG AND DROP
     this.cardContainer.addEventListener("dragend", (event) => this.addToBin(event));
+
     this.btnOpenModal.addEventListener("click", () => this.openModal(this.title, this.description));
     this.btnBin.addEventListener("click", (event) => this.addToBin(event));
   }
   addToBin(event) {
     const card = event.target.closest(".card__container");
-
     const binWrapper = document.querySelector(".cart-lists");
 
     const productInfo = {
