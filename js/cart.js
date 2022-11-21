@@ -58,8 +58,14 @@ class Cart {
   }
   listenEvents() {
     //  DRAG AND DROP
-    this.binWrapper.ondragover = (event) => event.preventDefault();
-    this.binWrapper.ondragenter = (event) => event.preventDefault();
+    const dragEnter = (e) => {
+      e.preventDefault();
+    };
+    const dragOver = (e) => {
+      e.preventDefault();
+    };
+    this.binWrapper.addEventListener("dragenter", dragEnter);
+    this.binWrapper.addEventListener("dragover", dragOver);
 
     this.btnConfirm.addEventListener("click", () => {
       this.openOrderPage();

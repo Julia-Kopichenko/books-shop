@@ -8,13 +8,17 @@
 }
 // label
 label,
-legend {
+legend,
+::placeholder {
   text-align: start;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: $color-text-light;
   opacity: 0.7;
+}
+::placeholder {
+  font-size: 1.6rem;
 }
 // inputs
 input[type="text"],
@@ -25,10 +29,10 @@ input[type="date"] {
   border: $border;
   border-radius: 2px;
   font-family: "Roboto", Arial, sans-serif;
-  font-size: 1.6rem;
+  font-size: 2rem;
   line-height: 140%;
   padding: 9px 17px 9px 16px;
-  color: $color-text-light;
+  color: $color-text;
   &:hover {
     border: 1px solid $color-orange;
   }
@@ -51,7 +55,7 @@ input[type="date"] {
     border: 1px solid red;
   }
 }
-#paymentType {
+fieldset {
   display: flex;
   align-items: flex-start;
   border: $border;
@@ -59,7 +63,12 @@ input[type="date"] {
   & label {
     margin-right: 35px;
     line-height: 27px;
+    font-family: "Roboto", Arial, sans-serif;
+    color: $color-text;
+    font-size: 1.8rem;
+    line-height: 140%;
   }
+  margin-bottom: 1rem;
 }
 input[type="radio"] {
   appearance: none;
@@ -68,12 +77,22 @@ input[type="radio"] {
   height: 16px;
   border: 2px solid #999;
   transition: 0.2s all linear;
-  margin-right: 5px;
+  margin-right: 1rem;
   position: relative;
-  top: 4px;
+  top: 2px;
   &:checked {
     border: 4px solid $color-orange;
   }
+}
+.checkbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  & div {
+    margin-bottom: 1rem;
+  }
+}
+input[type="checkbox"] {
+  margin-right: 1rem;
 }
 
 // error message
@@ -106,4 +125,8 @@ input[type="radio"] {
   & .btn:first-child {
     margin-right: 1rem;
   }
+}
+
+footer {
+  height: 20rem;
 }
