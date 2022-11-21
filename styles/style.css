@@ -339,26 +339,6 @@ img {
   max-width: 100%;
 }
 
-@font-face {
-  font-family: Roboto;
-  src: url("../../assets/fonts/Roboto-Regular.ttf");
-  font-weight: 100;
-}
-@font-face {
-  font-family: Roboto;
-  src: url("../../assets/fonts/Roboto-Light.ttf");
-  font-weight: 300;
-}
-@font-face {
-  font-family: Roboto;
-  src: url("../../assets/fonts/Roboto-Medium.ttf");
-  font-weight: 500;
-}
-@font-face {
-  font-family: Roboto;
-  src: url("../../assets/fonts/Roboto-Bold.ttf");
-  font-weight: 700;
-}
 body,
 html {
   background-color: #f8f9f9;
@@ -371,7 +351,7 @@ html {
 }
 
 body {
-  font-family: "Roboto", Verdana, serif;
+  font-family: "Roboto", Verdana, sans-serif;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
@@ -466,6 +446,7 @@ button {
   border: 1px solid #fe9013;
   padding: 1rem;
   font-size: 1.6rem;
+  font-weight: 500;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -476,6 +457,7 @@ button {
 
 .btn-link {
   font-size: 1.6rem;
+  font-weight: 500;
   color: #fe9013;
   border: unset;
   background: unset;
