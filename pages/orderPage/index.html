@@ -51,15 +51,33 @@
                     pattern="^[1-9–]+[-0-9–]*$">
                   <span class="error-message none">Only positive numbers,dash symbol is allowed</span>
                   <!-- Payment type -->
-                  <fieldset id="paymentType">
+                  <fieldset>
                     <legend>Chose Payment type *</legend>
                     <input type="radio" id="card" name="paymentType" value="card" checked>
                     <label for="card">Card</label>
                     <input type="radio" id="cash" name="paymentType" value="cash">
                     <label for="cash">Cash</label>
                   </fieldset>
+                  <!-- gifts -->
+                  <fieldset class="checkbox-wrapper">
+                    <legend>Choose 2 gifts</legend>
+                    <div>
+                      <input type="checkbox" class="checkbox" name="pack" value="pack" id="pack" />
+                      <label for="pack">Pack</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" class="checkbox" name="postcard" value="postcard" id="postcard" />
+                      <label for="postcard">Add postcard</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" class="checkbox" name="discount" value="discount" id="discount" /><label
+                        for="discount">Provide 2% discount to the next time</label>
+                    </div>
+                    <div><input type="checkbox" class="checkbox" name="pen" value="pen" id="pen" /><label
+                        for="pen">Branded pen or pencil</label>
+                    </div>
 
-
+                  </fieldset>
                 </div>
                 <div class="form__button-type">
                   <input type="submit" class="btn" id="btn-submit" name="btn-submit" value="Confirm" disabled>
@@ -73,6 +91,7 @@
         </div>
       </div>
     </main>
+    <footer></footer>
   </div>
 
   <script src="../../js/toggleBinStatus.js"></script>

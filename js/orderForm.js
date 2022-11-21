@@ -88,6 +88,18 @@ function inputHandler({ target }) {
     }
   }
 }
+// checkbox
+const allCheckbox = document.querySelectorAll(".checkbox");
+const max = 2;
+allCheckbox.forEach((input) => {
+  input.addEventListener("click", isCheked);
+});
+function isCheked(event) {
+  const checkedInputs = document.querySelectorAll(".checkbox:checked");
+  if (checkedInputs.length > max) {
+    event.preventDefault();
+  }
+}
 
 // clear form function
 function clearForm() {
