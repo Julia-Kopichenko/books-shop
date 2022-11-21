@@ -23,33 +23,41 @@
               <form id="form" novalidate>
                 <div class="form__text-block">
 
-                  <label for="name">Name</label>
+                  <label for="name">Name *</label>
                   <input type="text" name="name" id="name" placeholder="Name" pattern='^[A-Za-z]{4,}$' required>
                   <span class="error-message none">Strings only, without spaces,the length not less than 4</span>
 
-                  <label for="surname">Surname</label>
+                  <label for="surname">Surname *</label>
                   <input type="text" name="surname" id="surname" placeholder="Surname" pattern='^[A-Za-z]{5,}$'
                     required>
                   <span class="error-message none">Strings only, without spaces,the length not less than 5</span>
                   <!-- Delivery date -->
-                  <label for="delivery-date">Delivery date</label>
+                  <label for="delivery-date">Delivery date *</label>
                   <input type="date" id="delivery-date" name="delivery-date" required />
-                  <span class="confirm-message none">Not earlier than next day</span>
+                  <span class="error-message none">Not earlier than next day</span>
                   <!-- Street -->
-                  <label for="street">Street</label>
+                  <label for="street">Street *</label>
                   <input type="text" name="street" id="street" placeholder="Street" required
                     pattern="^[0-9a-zA-Z]{5,}$">
                   <span class="error-message none">Street should be at least 5 characters</span>
                   <!-- House number -->
-                  <label for="houseNum">House number</label>
+                  <label for="houseNum">House number *</label>
                   <input type="text" name="houseNum" id="houseNum" placeholder="House number" required
                     pattern="^[1-9]+[0-9]*$">
                   <span class="error-message none">Only positive numbers</span>
                   <!-- Flat number -->
-                  <label for="flatNum">Flat number</label>
+                  <label for="flatNum">Flat number *</label>
                   <input type="text" name="flatNum" id="flatNum" placeholder="Flat number" required
                     pattern="^[1-9–]+[-0-9–]*$">
                   <span class="error-message none">Only positive numbers,dash symbol is allowed</span>
+                  <!-- Payment type -->
+                  <fieldset id="paymentType">
+                    <legend>Chose Payment type *</legend>
+                    <input type="radio" id="card" name="paymentType" value="card" checked>
+                    <label for="card">Card</label>
+                    <input type="radio" id="cash" name="paymentType" value="cash">
+                    <label for="cash">Cash</label>
+                  </fieldset>
 
 
                 </div>
@@ -59,6 +67,7 @@
                 </div>
 
               </form>
+              <p style="font-weight: 500; font-size: 14px;line-height: 20px; color: #474747;">* mandatory</p>
             </div>
           </div>
         </div>

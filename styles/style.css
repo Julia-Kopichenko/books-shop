@@ -765,7 +765,8 @@ h1 {
   margin-bottom: 3.5rem;
 }
 
-label {
+label,
+legend {
   text-align: start;
   font-weight: 500;
   font-size: 14px;
@@ -774,14 +775,10 @@ label {
   opacity: 0.7;
 }
 
-input {
+input[type=text],
+input[type=date] {
   height: 40px;
   margin-bottom: 10px;
-}
-
-input,
-textarea,
-select {
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 2px;
@@ -791,24 +788,58 @@ select {
   padding: 9px 17px 9px 16px;
   color: #474747;
 }
-
-input:focus,
-textarea:focus,
-select:focus {
+input[type=text]:hover,
+input[type=date]:hover {
+  border: 1px solid #fe9013;
+}
+input[type=text]:focus,
+input[type=date]:focus {
   outline: none;
   border: 2px auto #fe9013;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
   color: #212529;
 }
-input:focus:valid,
-textarea:focus:valid,
-select:focus:valid {
+input[type=text]:focus:required,
+input[type=date]:focus:required {
+  border: 1px solid #fe9013;
+}
+input[type=text]:focus:required.invalid,
+input[type=date]:focus:required.invalid {
+  border: 1px solid red;
+}
+input[type=text]:focus:required:valid,
+input[type=date]:focus:required:valid {
   border: 1px solid green;
 }
-input:focus:invalid,
-textarea:focus:invalid,
-select:focus:invalid {
+input[type=text].invalid,
+input[type=date].invalid {
   border: 1px solid red;
+}
+
+#paymentType {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 2px;
+}
+#paymentType label {
+  margin-right: 35px;
+  line-height: 27px;
+}
+
+input[type=radio] {
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
+}
+input[type=radio]:checked {
+  border: 4px solid #fe9013;
 }
 
 .error-message {
@@ -829,16 +860,16 @@ select:focus:invalid {
 .form__button-type .btn {
   cursor: pointer;
   width: 180px;
+  margin-bottom: 1.5rem;
 }
-.form__button-type .btn:first-child {
-  margin-right: 1rem;
-}
-
-.btn:disabled {
+.form__button-type .btn:disabled {
   color: #474747;
   background-color: #f8f9f9;
   border: 1px solid rgba(0, 0, 0, 0.125);
   pointer-events: none;
+}
+.form__button-type .btn:first-child {
+  margin-right: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */

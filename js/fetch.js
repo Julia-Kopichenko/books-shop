@@ -6,7 +6,6 @@ fetch("../../books.json")
   .catch((error) => console.log(error));
 
 function renderProducts(array) {
-  let fragment = new DocumentFragment();
 
   array.forEach((data, index) => {
     let card = new CatalogCard(data, index);
