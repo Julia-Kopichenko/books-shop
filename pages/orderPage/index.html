@@ -40,8 +40,7 @@
                   <span class="error-message none">Not earlier than next day</span>
                   <!-- Street -->
                   <label for="street">Street *</label>
-                  <input type="text" name="street" id="street" placeholder="Street" required
-                    pattern="^[A-Za-z0-9][A-Za-z0-9 ]{5,}$">
+                  <input type="text" name="street" id="street" placeholder="Street" required pattern="[^'\x22]{5,}">
                   <span class="error-message none">Street should be at least 5 characters</span>
                   <!-- House number -->
                   <label for="houseNum">House number *</label>
